@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply from: '../signing.gradle'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.appTargetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+
+        /*manifestPlaceholders = [
+                // 设置manifest.xml中的变量
+
+        ]*/
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+        dirs 'aars'
+    }
+    mavenCentral()
+}
+
+dependencies {
+      implementation rootProject.ext.dependencies['filetree']
+      implementation rootProject.ext.dependencies['baselib']
+//    implementation rootProject.ext.dependencies['greendao']
+//    implementation rootProject.ext.dependencies['greendao-helper']
+//    implementation rootProject.ext.dependencies['arouter']
+//    annotationProcessor rootProject.ext.dependencies['arouter-compiler']
+}

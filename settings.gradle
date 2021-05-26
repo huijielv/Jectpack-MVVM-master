@@ -1,0 +1,3 @@
+rootProject.name='Jectpack-MVVM-master'
+include ':app'
+include ':mvvmlib'
