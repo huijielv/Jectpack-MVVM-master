@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -99,4 +101,6 @@ dependencies {
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1'
 
     api 'com.tencent:mmkv-static:1.2.6'
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
