@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply from: '../signing.gradle'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -52,6 +53,9 @@ repositories {
 dependencies {
       implementation rootProject.ext.dependencies['filetree']
       implementation rootProject.ext.dependencies['baselib']
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
 //    implementation rootProject.ext.dependencies['greendao']
 //    implementation rootProject.ext.dependencies['greendao-helper']
 //    implementation rootProject.ext.dependencies['arouter']
